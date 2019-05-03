@@ -8,7 +8,6 @@ After reading a command:
 	if the player's command matches the regular expression "\.\d{2,3}":
 		remove periods.
 
-
 When play begins:
 	now the story viewpoint is first person singular.
 
@@ -144,6 +143,7 @@ Understand "put [things] in [something]" or "load [gun] with [things]" or "load 
 Understand "load [gun] with [something]" or "load [something] into [gun]" as inserting it into.
 
 [TODO: Special handling for multiple-bullet loading. This is low priority as it's just to make the text look nicer.]
+[See 20.7 Making new text with substitutions and example 418 The Cow Exonerated for some very useful stuff]
 [Understand "put [things] in [something]" or "load [gun] with [things]" or "load [things] into [gun]" as multiply-inserting it into.]
 
 Check inserting something into a gun:
@@ -163,12 +163,12 @@ Check shooting:
 		say "Click! It's empty." instead.
 
 Carry out shooting:
-	now a random thing in the noun is nowhere.
+	now a random ammo in the noun is nowhere.
 	
 Report shooting:
 	say "I squeeze the trigger and fire a round - BANG!!".
 
-A 38 caliber bullet is a kind of ammo.  The plural of 38 caliber bullet is 38 caliber bullets. The printed name is ".38 caliber bullet". The printed plural name is ".38 caliber bullets". The caliber of a 38 caliber bullet is always ".38". [Understand "38 bullet/round" or "38 caliber bullet/round" or "box of bullets/rounds/38" as a 38 caliber round.]
+A 38 caliber bullet is a kind of ammo.  The plural of 38 caliber bullet is 38 caliber bullets. The printed name is ".38 caliber bullet". The printed plural name is ".38 caliber bullets". The caliber of a 38 caliber bullet is always ".38". Understand "38 bullet/round" or "38 caliber bullet/round" or "box of bullets/rounds/38" as a 38 caliber bullet.
 
 Section 2 - The Detective Office
 
