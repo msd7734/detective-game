@@ -1,0 +1,23 @@
+*~
+*.blurb
+*Build
+*.DS_Store
+*.glk*
+*.iFiction
+*Index
+*manifest.plist
+*Release
+*Reserved
+*.rtf
+*.skein
+*.tiff
+*Settings.plist
+*Inform\ Map.eps
+tools/diff.txt
+tools/transcript.txt
+tools/git
+tools/glulxe
+tools/regtest/git-remglk
+tools/comparison\ transcripts/*
+tools/profiling/profile-raw
+tools/profiling/*.txt
