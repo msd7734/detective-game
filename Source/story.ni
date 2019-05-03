@@ -35,7 +35,10 @@ Understand "light [something] with [something preferably held]" or "burn [someth
 Check lighting it with:
 	if the noun is not flammable:
 		if the second noun is firestarting:
-			say "That would be a really bad idea.";
+			if the noun is ammo:
+				say "I don't feel like blowing my fingers off at the moment. Maybe at a later date.";
+			otherwise:
+				say "That would be a really bad idea.";
 		otherwise:
 			say "That's not going to work.";
 		stop the action;
@@ -120,34 +123,44 @@ To decide whether peering into the known (this is the see familiar and visible l
 After printing the description of a door:
 	let R be the other side;
 	if peering into the known:
-		say "It leads to [the convenient name of R]." instead;
+		say "It leads to [the convenient name of R].";
 	otherwise if R is visited:
-		say "I recall it leads to [the convenient name of R]." instead.
-		
-[ -- Guns -- ]
+		say "I recall it leads to [the convenient name of R].".
+
+[ -- Collectible -- ]
+A collectible is a kind of thing. A collectible has a number called quantity. A collectible has some text called counter word.
+After printing the description of a collectible:
+	let has-counter be whether or not the counter word is not "";
+	say "([quantity][if has-counter is true] [counter word][end if])[line break]".
+Rule for printing inventory details of a collectible:
+	let has-counter be whether or not the counter word is not "";
+	say " ([quantity][if has-counter is true] [counter word][end if])".
+
+[ -- Guns and Ammo -- ]
 A gun is a kind of portable container. A gun has some text called chambering.
+After printing the description of a gun:
+	if the gun is loaded:
+		let N be the number of ammo in the noun;
+		say "It's loaded with [N] round(s)."
 
-Ammo is a kind of thing. Ammo has some text called a caliber. Ammo has a number called quantity. Ammo can be loose or boxed. Ammo is usually boxed.
-Rule for printing the name of ammo:
-	if the ammo is boxed:
-		now the indefinite article is "a box of";
-	otherwise:
-		now the indefinite article is "some";
-	say "[printed name]".
+Ammo is a kind of collectible. Ammo is a kind of thing. Ammo has some text called a caliber.
 
+Definition: a gun is loaded if it contains ammo.
 
 Understand "load [gun] with [ammo]" or "load [ammo] into [gun]" as inserting it into.
-Check inserting ammo into a gun:
-	say "I'll try to put the [the noun] into [the second noun].";
-	continue the action.
+Check inserting something into a gun:
+	if the noun is not ammo, say "How about you load it into your ass instead?"
 Instead of inserting a gun into ammo:
 	try inserting the second noun into the noun.
+Rule for printing the name of ammo while inserting:
+	say "the [printed name]".
 
+A 38 caliber bullet is a kind of ammo.  The plural of 38 caliber bullet is 38 caliber bullets. The printed name is ".38 caliber bullet". The caliber of a 38 caliber bullet is always ".38".
 
 Section 2 - The Detective Office
 
-The detective bullets are ammo.  The printed name is ".38 caliber bullets". The caliber is ".38". Understand "38 bullets/rounds" or "38 caliber bullets/rounds" as the detective bullets. The player carries the detective bullets.
-The detetive revolver is a gun. The printed name is ".38 Special". The chambering is ".38". Understand "38 special/revolver" as the detective revolver. The player carries the detective revolver.
+Detective bullets are ammo. The printed name is ".38 caliber bullets". The caliber is ".38". The quantity is 6. The description is "A box of .38 caliber rounds." Understand "38 bullets/rounds" or "38 caliber bullets/rounds" or "box of bullets/rounds/38" as detective bullets. The player carries detective bullets.
+The detective revolver is a gun. The printed name is ".38 special revolver". The chambering is ".38". The carrying capacity is 6. The description is "My trusty .38 special that can hold [carrying capacity] rounds.[first time] Or, I assume it's trusty because I've never had to actually shoot someone with it. What did you think this is, murder incorporated? If I gunned down every suspect who deserved it I'd have been hauled off to the slammer a long time ago.[if loaded] Anyway... [end if][only]". Understand "38 special/revolver" as the detective revolver. The player carries the detective revolver.
 
 The Detective Office is a room. "My gross little office.[first time] The negative energy from my long nights of brooding has yellowed the wallpaper. Either that or Landlady Dorris put yellow wallpaper up while I was out one day.[only][if smoky] It's a little hazy in here.[end if] The door out is on the north wall." The printed name is "My Office". The convenient name is "my [if smoky]smoky [end if]office". It is intimately familiar.
 
