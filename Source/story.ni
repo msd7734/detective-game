@@ -127,15 +127,6 @@ After printing the description of a door:
 	otherwise if R is visited:
 		say "I recall it leads to [the convenient name of R].".
 
-[ -- Collectible -- ]
-A collectible is a kind of thing. A collectible has a number called quantity. A collectible has some text called counter word.
-After printing the description of a collectible:
-	let has-counter be whether or not the counter word is not "";
-	say "([quantity][if has-counter is true] [counter word][end if])[line break]".
-Rule for printing inventory details of a collectible:
-	let has-counter be whether or not the counter word is not "";
-	say " ([quantity][if has-counter is true] [counter word][end if])".
-
 [ -- Guns and Ammo -- ]
 A gun is a kind of portable container. A gun has some text called chambering.
 After printing the description of a gun:
@@ -143,23 +134,25 @@ After printing the description of a gun:
 		let N be the number of ammo in the noun;
 		say "It's loaded with [N] round(s)."
 
-Ammo is a kind of collectible. Ammo is a kind of thing. Ammo has some text called a caliber.
+Ammo is a kind of thing. Ammo has some text called a caliber.
 
 Definition: a gun is loaded if it contains ammo.
 
-Understand "load [gun] with [ammo]" or "load [ammo] into [gun]" as inserting it into.
+Understand "load [gun] with [something]" or "load [something] into [gun]" as inserting it into.
 Check inserting something into a gun:
-	if the noun is not ammo, say "How about you load it into your ass instead?"
-Instead of inserting a gun into ammo:
-	try inserting the second noun into the noun.
-Rule for printing the name of ammo while inserting:
-	say "the [printed name]".
+	if the noun is not ammo, say  the flippant loading denial instead.
+Check inserting a gun into something:
+	if the second noun is ammo, try inserting the second noun into the noun instead;
+	otherwise:
+		say the flippant loading denial instead.
+To say the flippant loading denial:
+	say "[if a random chance of 1 in 5 succeeds]How about you load it into your ass instead?[otherwise]That's not how guns work."
 
-A 38 caliber bullet is a kind of ammo.  The plural of 38 caliber bullet is 38 caliber bullets. The printed name is ".38 caliber bullet". The caliber of a 38 caliber bullet is always ".38".
+A 38 caliber bullet is a kind of ammo.  The plural of 38 caliber bullet is 38 caliber bullets. The printed name is ".38 caliber bullet". The caliber of a 38 caliber bullet is always ".38". [Understand "38 bullet/round" or "38 caliber bullet/round" or "box of bullets/rounds/38" as a 38 caliber round.]
 
 Section 2 - The Detective Office
 
-Detective bullets are ammo. The printed name is ".38 caliber bullets". The caliber is ".38". The quantity is 6. The description is "A box of .38 caliber rounds." Understand "38 bullets/rounds" or "38 caliber bullets/rounds" or "box of bullets/rounds/38" as detective bullets. The player carries detective bullets.
+The player carries six 38 caliber bullets.
 The detective revolver is a gun. The printed name is ".38 special revolver". The chambering is ".38". The carrying capacity is 6. The description is "My trusty .38 special that can hold [carrying capacity] rounds.[first time] Or, I assume it's trusty because I've never had to actually shoot someone with it. What did you think this is, murder incorporated? If I gunned down every suspect who deserved it I'd have been hauled off to the slammer a long time ago.[if loaded] Anyway... [end if][only]". Understand "38 special/revolver" as the detective revolver. The player carries the detective revolver.
 
 The Detective Office is a room. "My gross little office.[first time] The negative energy from my long nights of brooding has yellowed the wallpaper. Either that or Landlady Dorris put yellow wallpaper up while I was out one day.[only][if smoky] It's a little hazy in here.[end if] The door out is on the north wall." The printed name is "My Office". The convenient name is "my [if smoky]smoky [end if]office". It is intimately familiar.
