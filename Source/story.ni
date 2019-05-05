@@ -143,11 +143,17 @@ Understand "put [things] in [something]" or "load [gun] with [things]" or "load 
 Understand "load [gun] with [something]" or "load [something] into [gun]" as inserting it into.
 
 [TODO: Special handling for multiple-bullet loading. This is low priority as it's just to make the text look nicer.]
+[ ACTUALLY... it's higher priority because if there are different ammo types and you try to load all the .22lr ammo into the .38 it'll spam the 'can't load' message a billion times]
 [See 20.7 Making new text with substitutions and example 418 The Cow Exonerated for some very useful stuff]
 [Understand "put [things] in [something]" or "load [gun] with [things]" or "load [things] into [gun]" as multiply-inserting it into.]
 
 Check inserting something into a gun:
-	if the noun is not ammo, say  the flippant loading denial instead.
+	if the noun is not ammo, say  the flippant loading denial instead;
+	otherwise :
+		let CH be the chambering of the second noun;
+		let CAL be the caliber of the noun;
+		if CH is not CAL:
+			say "I need something in [CH] caliber for [the second noun]. [CAL] won't cut it." instead.
 Check inserting a gun into something:
 	if the second noun is ammo, try inserting the second noun into the noun instead;
 	otherwise:
@@ -169,6 +175,8 @@ Report shooting:
 	say "I squeeze the trigger and fire a round - BANG!!".
 
 A 38 caliber bullet is a kind of ammo.  The plural of 38 caliber bullet is 38 caliber bullets. The printed name is ".38 caliber bullet". The printed plural name is ".38 caliber bullets". The caliber of a 38 caliber bullet is always ".38". Understand "38 bullet/round" or "38 caliber bullet/round" or "box of bullets/rounds/38" as a 38 caliber bullet.
+
+A 22lr bullet is a kind of ammo. The plural of 22lr bullet is 22lr bullets. The printed name is ".22lr bullet". The printed plural name is ".22lr bullets". The caliber of a 22lr bullet is always ".22lr". Understand "22lr round" as a 22lr bullet.
 
 Section 2 - The Detective Office
 
@@ -203,6 +211,7 @@ Instead of burning the matchbook:
 Rule for printing the name of the matchbook while lighting something with the matchbook:
 	say "matches".
 
+The fresh box of 22lr ammo is in the Detective Office. It is closed. It is openable. The fresh box of 22lr ammo contains 20 22lr bullets.
 
 The Detective Office Door is north of the Detective Office and south of the Dingy Stairwell.  The Detective Office Door is a door. The description is "'John Detective' is stenciled onto the frosted glass in bold black lettering." The printed name is "door". The Detective Office Door is see-through.
 
