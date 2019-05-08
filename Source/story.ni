@@ -87,6 +87,12 @@ Definition: a door is transparent:
 	if the door is open, yes;
 	no.
 
+To decide whether peering into the known (this is the see familiar and visible locations behind doors rule):
+	if the printing the description activity is going on and the noun is a door:
+		if the door is transparent, yes;
+		if the other side of the noun is intimately familiar, yes;
+	no.
+
 [ -- Rooms -- ]
 A room has some text called the convenient description. The convenient description is usually "[description]".
 A room has some text called the convenient name. The convenient name is usually "[printed name]".
@@ -111,13 +117,6 @@ Rule for printing the description of something (called item):
 		
 Last after printing the description of something:
 	say "[paragraph break]".
-
-
-To decide whether peering into the known (this is the see familiar and visible locations behind doors rule):
-	if the printing the description activity is going on and the noun is a door:
-		if the door is transparent, yes;
-		if the other side of the noun is intimately familiar, yes;
-	no.
 
 After printing the description of a door:
 	let R be the other side;
@@ -178,6 +177,10 @@ A 38 caliber bullet is a kind of ammo.  The plural of 38 caliber bullet is 38 ca
 
 A 22lr bullet is a kind of ammo. The plural of 22lr bullet is 22lr bullets. The printed name is ".22lr bullet". The printed plural name is ".22lr bullets". The caliber of a 22lr bullet is always ".22lr". Understand "22lr round" as a 22lr bullet.
 
+[ -- Set Dressing Actions -- ]
+Smoking is an action applying to one thing. Understand "smoke [something preferably held]" or "inhale [something preferably held]" as smoking. Instead of smoking, say "No thanks."
+
+
 Section 2 - The Detective Office
 
 The player carries 7 38 caliber bullets.
@@ -187,11 +190,18 @@ The Detective Office is a room. "My gross little office.[first time] The negativ
 
 The ashtray is scenery in the Detective Office. The description is "I once saw a guy dump one of these into a giant beer and drink the whole thing...[if a random chance of 1 in 20 succeeds] That guy was me."
 
-The half-smoked stogey is in the Detective Office. "A half-smoked stogey sits [if unlit]dead and ashen [otherwise]smoldering [end if]in the ashtray on my desk."  The description is "A fine, cheap cigar that I've smoked halfway. [if unlit]I could light it back up if I wanted.[otherwise]The smoldering tip gives of a pleasant amount of savory cigar smoke." The stogey is flammable. Understand "cigar" as the half-smoked stogey.
+The yellowed wallpaper is scenery in the Detective Office. The description is "Yellower than, uh... I don't wanna say what.". Understand "yellow wallpaper" as the yellowed wallpaper.
+
+The half-smoked stogey is in the Detective Office. "A half-smoked stogey sits [if unlit]dead and ashen [otherwise]smoldering [end if]in the ashtray on my desk."  The description is "A fine, cheap cigar that I've smoked halfway. [if unlit]I could light it back up if I wanted.[otherwise]The smoldering tip gives off a pleasant amount of savory cigar smoke." The stogey is flammable. Understand "cigar" as the half-smoked stogey.
 Report lighting the half-smoked stogey with something:
 	say "[one of]Ahh, that's better. I never had a father around to tell me not to inhale cigar smoke so I picked up the habit at an early age. I'm sure these things are killing me, but certainly no faster than the crushing weight of all the existential dread.[or]Let's light this baby back up.[stopping]".
+Instead of smoking the half-smoked stogey:
+	if the noun is unlit:
+		say "[if a random chance of 1 in 5 succeeds]Freud said cigars were a symbol of phallic obsession. If I start sucking on an unlit cigar, I'll only be proving him right.[otherwise]I can't smoke it while it's not lit.";
+	otherwise:
+		say "I take a nice puff on the cigar. Quite relaxing."
 After dropping the stogey while the player is in the Detective Office:
-	say "I'll put it back in the ashtray[if a random chance of 1 in 20 succeeds]. The ashes of my hopes and dreams keep this place dirty enough already[end if].";
+	say "I'll put it back in the ashtray[if a random chance of 1 in 10 succeeds]. The ashes of my hopes and dreams keep this place dirty enough already[end if].";
 	now the stogey is not handled.
 
 The office desk is in the Detective Office. The description is "My old desk. It's pockmarked with years of coffee stains. The drawer's [if open]been left open[otherwise]closed[end if]." The office desk is closed and openable. Understand "drawer" as the office desk.
@@ -211,12 +221,14 @@ Instead of burning the matchbook:
 Rule for printing the name of the matchbook while lighting something with the matchbook:
 	say "matches".
 
-The fresh box of 22lr ammo is in the Detective Office. It is closed. It is openable. The fresh box of 22lr ammo contains 20 22lr bullets.
-
 The Detective Office Door is north of the Detective Office and south of the Dingy Stairwell.  The Detective Office Door is a door. The description is "'John Detective' is stenciled onto the frosted glass in bold black lettering." The printed name is "door". The Detective Office Door is see-through.
 
-The Dingy Stairwell is a room. "The rough concrete stairwell leads downward to the lobby. A flickering fluorescent light occasionally strobes above." The convenient name is "a stairwell".
+The Dingy Stairwell is a room. "The rough concrete stairwell leads downward to the lobby. A flickering fluorescent light occasionally strobes above. The way out to the lobby is to the north." The convenient name is "a stairwell".
 
 The rough concrete stairs is scenery in the Dingy Stairwell. The description is "I must've climbed up and down these stairs ten thousand times over the years." Understand "stairwell" as the rough concrete stairs. 
 
 The flickering fluorescent light is scenery in the Dingy Stairwell. The description is "I've told Landlady Dorris a hundred times to get that thing replaced. She's done it a few times now but they all end up like this after too long. It's either time she call an electrician, or time she stopped buying from those shady discount fluorescent outlets.".
+
+The Dingy Lobby is north of the Dingy Stairwell. "The lobby of the building where my office is located.[first time] Rescued and restored vintage red carpeting, brown and gold diamond-patterned wallpaper, and even a kitschy chandelier makes this place look like the the hotel in The Shining. Thankfully it's been months since an ax-wielding psychopath has wandered these hallowed halls.[only]"
+
+Test me with "n / n / look".
